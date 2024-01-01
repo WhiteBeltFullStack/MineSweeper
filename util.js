@@ -6,7 +6,7 @@ function renderBoard(board) {
         strHTML += `<tr>\n`
         for (var j = 0; j < board[i].length; j++) {
             var cellClassName = `cell cell-${i}-${j}`
-            var cellInner = board[i][j].isMine ? MINE : '';
+            var cellInner = board[i][j].isMine ? MINE : board[i][j].minesAroundCount;
            
             strHTML += `<td onclick="onCellClicked(this,${i},${j})" class="${cellClassName}">${cellInner}</td>\n`
         }
