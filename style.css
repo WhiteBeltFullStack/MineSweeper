@@ -1,0 +1,31 @@
+body{
+    text-align: center;
+    font: 100;
+    background-color: rgb(96, 131, 131);
+    color: white;
+}
+
+table {
+    margin: 0 auto;
+}
+
+table, td {
+    border: 1px solid  black;
+    /* border-collapse: collapse; */
+}
+tbody{
+    background-color: darkgrey;
+}
+
+td{
+    width: 30px;
+    height: 30px;
+}
+
+td:hover {
+    background-color: darkslategray;
+    
+}
+button{
+    background-color: orange;
+}
