@@ -52,7 +52,7 @@ function buildBoard(boardSize) {
     }
   }
 
-  var firstClick = board;
+  var firstClick = board;// trying to randomise First Click
   for (var i = 0; i < gLevel.MINES; i++) {
     var minePlaced = false;
     while (!minePlaced) {
@@ -88,9 +88,10 @@ function setMinesNegsCount(board, rowIdx, colIdx) {
   }
 }
 
-function onCellClicked(elCell, i, j, event) {
+function onCellClicked(elCell,event, i,j) {
   // console.log('Clicked:', event);
-
+  if(gBoard[i][j].isMarked) return
+  
   elCell.style.backgroundColor = 'darkslategray';
 
  
@@ -108,34 +109,45 @@ function onCellClicked(elCell, i, j, event) {
     elCell.innerText = gBoard[i][j].minesAroundCount;
     gBoard[i][j].isShown = true;
     if (gBoard[i][j].minesAroundCount === 0) {
-      elCell.innerText = ' ';
+      elCell.innerText = '';
     }
   }
-  if (event.button === 2){
-    onCellMarked(elCell, event, i, j);
-  }
+  checkGameOver()
 }
 
 function onCellMarked(elCell, ev, i, j) {
   ev.preventDefault();
-  console.log(ev);
+  // console.log(ev);
   
     if (gBoard[i][j].isShown) {
       return;
     }
+
     if (!gBoard[i][j].isMarked) {
-      elCell.innerText = 'FLAG';
-    } else {
+      elCell.innerHTML = FLAG;
+      gBoard[i][j].isMarked = true
+    } else{
+    
       elCell.innerText = '';
+      gBoard[i][j].isMarked = false
+      
     }
+  }
   
+
+
+function checkGameOver() {
+  if(gMinesCount === gMinesRevealed) {}
+    
 }
 
-function checkGameOver() {}
-
-function expandSHown(board, elCell, i, j) {}
+function expandShown(board, elCell, i, j) {
+  //Recurssion
+}
 
 function minesOnBoard() {
   var elOnBoard = document.querySelector('.on-board');
   elOnBoard.innerText = gMinesCount;
 }
+
+//*degel life open

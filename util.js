@@ -8,8 +8,9 @@ function renderBoard(board) {
       var cellClassName = `cell cell-${i}-${j}`;
       var cellInner = board[i][j].isMine ? MINE : board[i][j].minesAroundCount;
 
-      strHTML += `<td  onclick="onCellClicked(this,${i},${j},event)" 
-             class=" ${cellClassName}">${cellInner}</td>\n`;
+      strHTML += `<td oncontextmenu="onCellMarked(this,event,${i},${j})"
+                  onclick="onCellClicked(this,event,${i},${j})" 
+                  class=" ${cellClassName}">${cellInner}</td>\n`;
     }
     strHTML += `</tr>\n`;
   }
